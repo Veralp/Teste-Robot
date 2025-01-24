@@ -1,0 +1,18 @@
+*** Settings ***
+Library    SeleniumLibrary
+*** Keywords ***
+
+I navigate to the login page
+    [Arguments]    ${URL}
+    Go to    ${URL}
+
+I Input correct Credentials
+    ${Arguments}  ${USERNAME}    ${PASSWORD}
+    Wait Until Element Is Visible    id=user-name
+    Input Text    id=user-name    ${USERNAME}
+    Input Text    id=password     ${PASSWORD}
+
+
+I click on the login button
+    Click Button    id=login-button
+
