@@ -1,19 +1,17 @@
-
 *** Settings ***
 Library    SeleniumLibrary
 Resource    ../resources/login_keywords.resource
-Test Setup    Open Browser    ${URL}    ${Browser}
+Test Setup    Open Browser    browser=chrome
+
 
 *** Variables ***
 ${URL}    https://www.saucedemo.com/
-${Browser}    chrome
-${USERNAME}    standard_user
-${PASSWORD}    secret_sauce
+
 
 *** Test Cases ***
 Successful Login
     I navigate to the login page    ${URL}    
-    I input correct Credentials    ${USERNAME}    ${PASSWORD}
+    I input correct Credentials    
     I click on the login button
     ${location}    Get Location
     Should Be Equal    ${location}    https://www.saucedemo.com/inventory.html
@@ -22,32 +20,32 @@ Successful Login
 
 Unsuccessful Login - No Credentials
     I navigate to the login page    ${URL}    
-
-
     I input no credentials        
     I click on the login button
-    I am able to the expected error message   Epic sadface: Username is required
+    I am able to see the expected error message for no credentials    
     Close Browser
     
 
 Unsuccessful Login - No Username
     I navigate to the login page    ${URL}    
-    I input only the password    ${PASSWORD}
+    I input only the password    
     
     I click on the login button
-    I am able to the expected error message   Epic sadface: Username is required
+    I am able to see the expected error message for no username 
     Close Browser
 
 Unsuccessful Login - No Password
     I navigate to the login page    ${URL}    
-    I input only the username    ${USERNAME}
+    I input only the username 
     I click on the login button
-    I am able to the expected error message   Epic sadface: Password is required
+    I am able to see the expected error message for no password 
     Close Browser
 
 Unsuccessful Login - Wrong Credentials
     I navigate to the login page    ${URL}    
-    I input wrong Credentials    kljuul    HJJKKLL    
+    I input wrong Credentials     
     I click on the login button
-    I am able to the expected error message    Epic sadface: Username and password do not match any user in this service
+    I am able to see the expected error message for wrong credentials    
     Close Browser
+
+
