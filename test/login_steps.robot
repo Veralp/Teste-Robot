@@ -1,16 +1,16 @@
 *** Settings ***
 Library    SeleniumLibrary
 Resource    ../resources/login_keywords.resource
-Test Setup    Open Browser    browser=chrome
+Suite Setup     Open Browser    browser=chrome
 
 
-*** Variables ***
-${URL}    https://www.saucedemo.com/
+#*** Variables ***
+#${URL}    https://www.saucedemo.com/
 
 
 *** Test Cases ***
 Successful Login
-    I navigate to the login page    ${URL}    
+    I navigate to the login page      
     I input correct Credentials    
     I click on the login button
     ${location}    Get Location
@@ -19,7 +19,7 @@ Successful Login
     Close Browser
 
 Unsuccessful Login - No Credentials
-    I navigate to the login page    ${URL}    
+    I navigate to the login page    
     I input no credentials        
     I click on the login button
     I am able to see the expected error message for no credentials    
@@ -27,7 +27,7 @@ Unsuccessful Login - No Credentials
     
 
 Unsuccessful Login - No Username
-    I navigate to the login page    ${URL}    
+    I navigate to the login page    
     I input only the password    
     
     I click on the login button
@@ -35,14 +35,14 @@ Unsuccessful Login - No Username
     Close Browser
 
 Unsuccessful Login - No Password
-    I navigate to the login page    ${URL}    
+    I navigate to the login page     
     I input only the username 
     I click on the login button
     I am able to see the expected error message for no password 
     Close Browser
 
 Unsuccessful Login - Wrong Credentials
-    I navigate to the login page    ${URL}    
+    I navigate to the login page      
     I input wrong Credentials     
     I click on the login button
     I am able to see the expected error message for wrong credentials    
