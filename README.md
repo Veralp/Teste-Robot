@@ -82,8 +82,7 @@ ${PASSWORD}    secret_sauce
 3. Para executar um teste específico:
    ```bash
   robot test/login_steps.robot
-
-   ```
+ ```
 
 4. Os resultados serão gerados nos arquivos **output.xml**, **log.html** e **report.html** no diretório do projeto.
 
